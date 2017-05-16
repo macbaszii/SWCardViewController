@@ -36,6 +36,9 @@ class ViewController: UIViewController, SWCardViewControllerDelegate {
             cv.setViewControllers([a, b, aa, bb], animated: false)
             cv.cardSize = CGSize(width: 260, height: 400)
             cv.delegate = self
+            
+            // Print Present Amount of View Controllers
+            print(cv.viewControllersCount())
         }
     }
     

@@ -91,6 +91,10 @@ open class SWCardViewController: UIViewController, UIGestureRecognizerDelegate {
         adjustInsets()
     }
     
+    open func viewControllersCount() -> Int {
+        return viewControllers.count
+    }
+    
     fileprivate func adjustInsets() {
         var firstCardSize = cardSize
         if let dataSource = dataSource {
