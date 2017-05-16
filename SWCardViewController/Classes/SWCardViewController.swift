@@ -47,6 +47,12 @@ public protocol SWCardViewControllerDataSource: class {
 open class SWCardViewController: UIViewController, UIGestureRecognizerDelegate {
 
     open var cardSize = CGSize(width: 300, height: 400)
+    open var isScrollEnabled = true {
+        didSet {
+            collectionView.isScrollEnabled = isScrollEnabled
+        }
+    }
+    
     weak open var delegate: SWCardViewControllerDelegate? = nil
     weak open var dataSource: SWCardViewControllerDataSource? = nil
     
@@ -61,6 +67,7 @@ open class SWCardViewController: UIViewController, UIGestureRecognizerDelegate {
             // TODO: find the cause of ghost view and reenable this
             collectionView.isPrefetchingEnabled = false
         }
+        
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = UIColor.clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +82,7 @@ open class SWCardViewController: UIViewController, UIGestureRecognizerDelegate {
         
         return collectionView
     }()
+    
     fileprivate var viewControllers = [UIViewController]()
     fileprivate var panGestureRecognizer: UIPanGestureRecognizer!
     fileprivate var tapGestureRecognizer: UITapGestureRecognizer!
@@ -123,6 +131,7 @@ open class SWCardViewController: UIViewController, UIGestureRecognizerDelegate {
     fileprivate func setupCollectionView() {
         // Reference to view only when view did load
         view.addSubview(collectionView)
+        
         if #available(iOS 9.0, *) {
             view.leftAnchor.constraint(equalTo: collectionView.leftAnchor).isActive = true
             view.rightAnchor.constraint(equalTo: collectionView.rightAnchor).isActive = true

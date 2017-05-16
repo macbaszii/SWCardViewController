@@ -32,6 +32,7 @@ class ViewController: UIViewController, SWCardViewControllerDelegate {
             let aa = storyboard.instantiateViewController(withIdentifier: "A")
             let bb = storyboard.instantiateViewController(withIdentifier: "B")
             cv.view.backgroundColor = UIColor.clear
+            cv.isScrollEnabled = false
             cv.modalPresentationStyle = .overCurrentContext
             cv.setViewControllers([a, b, aa, bb], animated: false)
             cv.cardSize = CGSize(width: 260, height: 400)
